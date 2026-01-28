@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetic Image Approximation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Genetic Image Approximation</h1>
+            <p>Upload an image and watch polygons evolve to recreate it</p>
+        </header>
+
+        <div class="controls">
+            <div class="upload-section">
+                <label for="image-upload" class="upload-btn">Choose Image</label>
+                <input type="file" id="image-upload" accept="image/*" />
+                <span id="file-name">No file selected</span>
+            </div>
+
+            <div class="settings">
+                <div class="setting">
+                    <label for="algorithm">Algorithm:</label>
+                    <select id="algorithm">
+                        <option value="0">Evolution Strategy</option>
+                        <option value="1">Simulated Annealing</option>
+                        <option value="2">Differential Evolution</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="max-iterations">Max Iterations:</label>
+                    <input type="number" id="max-iterations" value="50000" min="1000" max="500000" step="1000" />
+                </div>
+                <div class="setting">
+                    <label for="target-accuracy">Target Accuracy:</label>
+                    <input type="number" id="target-accuracy" value="0.90" min="0.5" max="0.99" step="0.01" />
+                </div>
+                <div class="setting">
+                    <label for="batch-size">Batch Size:</label>
+                    <input type="number" id="batch-size" value="10" min="1" max="100" step="1" />
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button id="start-btn" disabled>Start</button>
+                <button id="stop-btn" disabled>Stop</button>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="stats">
+                <span id="status">Ready</span>
+                <span id="iteration">Iteration: 0</span>
+                <span id="accuracy">Accuracy: 0.00%</span>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <div class="canvas-wrapper">
+                <h3>Original</h3>
+                <canvas id="original-canvas"></canvas>
+            </div>
+            <div class="canvas-wrapper">
+                <h3>Approximation</h3>
+                <canvas id="approx-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
